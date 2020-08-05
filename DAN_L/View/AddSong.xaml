@@ -1,0 +1,59 @@
+﻿<Window x:Class="DAN_L.View.AddSong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DAN_L.View"
+        mc:Ignorable="d"
+        Title="AddSong" Height="350" Width="550">
+    <Grid>
+        <Label Content="Name of song:"
+               HorizontalAlignment="Left"
+               Height="35"
+               Margin="40,80,0,0"
+               VerticalAlignment="Top"
+               Width="90" />
+        <Label Content="Author:"
+               HorizontalAlignment="Left"
+               Height="25"
+               Margin="40,120,0,0"
+               VerticalAlignment="Top"
+               Width="90" />
+        <Label Content="Duration (seconds)"
+               HorizontalAlignment="Left"
+               Height="25"
+               Margin="40,160,0,0"
+               VerticalAlignment="Top"
+               Width="120" />
+        <TextBox x:Name="txtName"
+                 Text="{Binding newSong.name, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="160,82,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="320" />
+        <TextBox x:Name="txtAuthor"
+                 Text="{Binding newSong.author, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="160,120,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="320" />
+        <TextBox x:Name="txtDuration"
+                 Text="{Binding newSong.duration, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="160,160,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="320" />
+        <Button Content="Save"
+                Command="{Binding save, UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Left"
+                Margin="235,220,0,0"
+                VerticalAlignment="Top"
+                Width="125" />
+    </Grid>
+</Window>
