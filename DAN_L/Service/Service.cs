@@ -29,14 +29,13 @@ namespace DAN_L.Service
         #endregion
        
         #region DELETE SONG
-        public static void DeleteReport(tblSong song)
+        public static void DeleteSong(tblSong song)
         {
             try
             {
                 using (dbPlayerEntities context = new dbPlayerEntities())
                 {
-                    tblSong songToDelete
- = (from u in context.tblSongs where u.songId == song.songId select u).First();
+                    tblSong songToDelete = (from u in context.tblSongs where u.songId == song.songId select u).First();
                     context.tblSongs.Remove(songToDelete);
                     context.SaveChanges();
                 }
