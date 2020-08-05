@@ -1,0 +1,77 @@
+﻿<Window x:Class="DAN_L.View.AudioPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DAN_L.View"
+        mc:Ignorable="d"
+        Title="AudioPlayer"
+        Height="450"
+        Width="800">
+    <Grid>
+        <Button x:Name="btnAddSong"
+                Content="Add Song"
+                Command="{Binding addSong, UpdateSourceTrigger = PropertyChanged}"
+                Margin="135,50,547,339"
+                FontWeight="Bold" />
+        <Button Content="Log Out"
+                Command="{Binding logOut, UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Left"
+                Height="30"
+                Margin="530,50,0,0"
+                VerticalAlignment="Top"
+                Width="110"
+                FontWeight="Bold"
+                RenderTransformOrigin="1.357,0.4" />
+        <Grid Grid.Column="1"
+              Grid.Row="2"
+              Height="auto"
+              Width="auto">
+            <DataGrid Name="DataGridPlayers"
+                      ItemsSource="{Binding playList, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding viewSong, UpdateSourceTrigger=PropertyChanged}"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="Black"
+                      BorderBrush="Black"
+                      Foreground="Black"
+                      FontWeight="Bold"
+                      Margin="165,95,152,30">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Song name"
+                                        Binding="{Binding name}" />
+                    <DataGridTextColumn Header="Author"
+                                        Binding="{Binding author}" />
+                    <DataGridTextColumn Header="Duration (seconds)"
+                                        Binding="{Binding duration}" />
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnDelete"
+                                        Content="Delete"
+                                        Command="{Binding Path=DataContext.deleteThisSong, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
+                                        Margin="4"
+                                        FontWeight="Bold" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnPlay"
+                                        Content="Play"
+                                        Command="{Binding Path=DataContext.playThisSong, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
+                                        Margin="4"
+                                        FontWeight="Bold" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
