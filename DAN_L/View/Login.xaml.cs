@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAN_L.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace DAN_L.View
         public Login()
         {
             InitializeComponent();
+            this.DataContext = new LoginViewModel(this);
         }
     }
 }

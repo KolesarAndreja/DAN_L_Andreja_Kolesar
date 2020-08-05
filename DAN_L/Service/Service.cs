@@ -49,20 +49,20 @@ namespace DAN_L.Service
         #endregion
 
         #region GET USER ID
-        public static int GetUserIdUsernameAndPsw(string username, string password)
+        public static tblUser GetUserByUsernameAndPsw(string username, string password)
         {
             try
             {
                 using (dbPlayerEntities context = new dbPlayerEntities())
                 {
                     tblUser result = (from x in context.tblUsers where x.username == username && x.password == password select x).FirstOrDefault();
-                    return result.userId;
+                    return result;
                 }
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Exception " + ex.Message.ToString());
-                return 0;
+                return null;
             }
         }
         #endregion
